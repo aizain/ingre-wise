@@ -1,0 +1,17 @@
+{
+  "name": "ingre-wise",
+  "version": "1.0.0",
+  "description": "食品配料智能分析相关云函数",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "openai": "^4.24.1",
+    "axios": "^1.6.2",
+    "@coze/api": "latest"
+  }
+}

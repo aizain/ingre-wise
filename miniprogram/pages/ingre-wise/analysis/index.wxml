@@ -1,0 +1,142 @@
+<!-- 加载状态 -->
+<view class="loading-container" wx:if="{{isLoading}}">
+  <view class="loading-content">
+    <image class="loading-icon" src="/images/icons/loading.svg" mode="aspectFit"></image>
+    <text class="loading-text">正在分析食品成分...</text>
+  </view>
+</view>
+
+<!-- 主要内容 -->
+<view class="container {{isLoading ? 'hidden' : ''}}">
+  <!-- 成分解析页 -->
+  <view class="analysis-page">
+    <!-- 产品信息卡片 -->
+    <view class="product-card">
+      <view class="product-info">
+        <image class="product-image" src="{{product.imageUrl}}" mode="aspectFill"></image>
+        <view class="product-detail">
+          <text class="product-name">{{product.name}}</text>
+          <view class="brand-info">
+            <text class="label">品牌：</text>
+            <text class="value">{{product.brand}}</text>
+          </view>
+          <view class="capture-time">
+            <text class="label">拍摄时间：</text>
+            <text class="value">{{product.captureTime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 配料表卡片 -->
+    <view class="ingredients-card">
+      <view class="card-header">
+        <text class="title">配料表</text>
+      </view>
+      
+      <!-- 高风险成分提示 -->
+      <view class="risk-warning" wx:if="{{hasHighRiskIngredients}}">
+        <view class="warning-title">
+          <image class="warning-icon" src="/images/icons/warn-point.svg"></image>
+          <text>高风险成分提示</text>
+        </view>
+        <view class="warning-content">
+          <text>{{highRiskWarning}}</text>
+        </view>
+      </view>
+
+      <!-- 配料表格 -->
+      <view class="ingredients-table">
+        <view class="table-header">
+          <text class="col-name" style="width: 124rpx; display: block; box-sizing: border-box">成分名称</text>
+          <text class="col-type" style="width: 124rpx; display: block; box-sizing: border-box">成分标签</text>
+          <text class="col-risk" style="width: 164rpx; display: flex; box-sizing: border-box">风险等级</text>
+          <text class="col-effect">作用</text>
+        </view>
+        <view class="table-body {{isExpanded ? 'expanded' : ''}}">
+          <view class="table-row" wx:for="{{ingredients}}" wx:key="index">
+            <text class="col-name clickable" bindtap="onIngredientTap" data-name="{{item.name}}">{{item.name}}</text>
+            <text class="col-type">{{item.tag}}</text>
+            <view class="col-risk">
+              <text class="risk-text {{item.riskLevel}}" style="width: 114rpx; display: block; box-sizing: border-box">{{item.riskLevel === 'low' ? '低风险' : item.riskLevel === 'medium' ? '中风险' : '高风险'}}</text>
+              <text class="risk-level">{{item.riskLevel === 'low' ? 'A' : item.riskLevel === 'medium' ? 'B' : 'D'}}</text>
+            </view>
+            <text class="col-effect">{{item.effect}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 展开按钮 -->
+      <view class="expand-btn" bindtap="toggleIngredients">
+        <text>{{isExpanded ? '收起' : '展开全部配料'}}</text>
+        <view class="expand-icon {{isExpanded ? 'expanded' : ''}}"></view>
+      </view>
+    </view>
+
+    <!-- 健康分析卡片 -->
+    <view class="health-card">
+      <view class="health-score">
+        <view class="score-header">
+          <text class="score-label">健康评分</text>
+          <text class="score-value">{{healthScore}}</text>
+        </view>
+        <view class="score-progress">
+          <view class="progress-bar" style="width: {{healthScore}}%"></view>
+        </view>
+      </view>
+      <view class="health-points">
+        <view class="point-item" wx:for="{{healthPoints}}" wx:key="index">
+          <image class="point-icon {{item.type}}" src="/images/icons/{{item.type}}-point.svg"></image>
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 添加剂信息卡片 -->
+    <view class="additives-card">
+      <view class="card-header">
+        <text class="title">添加剂信息</text>
+      </view>
+      <view class="additives-tags">
+        <view class="tag {{item.selected ? 'selected' : ''}}" 
+              wx:for="{{additiveTypes}}" 
+              wx:key="index"
+              bindtap="onTagTap"
+              data-index="{{index}}">
+          {{item.name}}
+        </view>
+      </view>
+      <view class="additives-detail" wx:for="{{currentAdditiveDetails}}" wx:key="index">
+        <view class="additive-name">{{item.name}}</view>
+        <view class="additive-desc">{{item.description}}</view>
+        <view class="additive-usage">{{item.usage}}</view>
+      </view>
+    </view>
+
+    <!-- Coze对话气泡 -->
+    <view class="chat-bubble {{isShowChat ? 'show' : ''}}" bindtap="toggleChat">
+      <image class="chat-icon" src="/images/icons/chat.png" mode="aspectFit"></image>
+    </view>
+
+    <!-- 聊天窗口 -->
+    <view class="chat-window {{isShowChat ? 'show' : ''}}">
+      <view class="chat-header">
+        <text class="chat-title">食材小助手</text>
+        <view class="close-btn" bindtap="toggleChat">×</view>
+      </view>
+      <scroll-view class="chat-content" scroll-y="true" scroll-into-view="{{scrollToMessage}}">
+        <view class="message-list">
+          <view wx:for="{{messages}}" wx:key="index" class="message {{item.type}}" id="msg-{{index}}">
+            <image wx:if="{{item.type === 'bot'}}" class="avatar" src="/images/icons/user.png" mode="aspectFit"></image>
+            <view class="message-content">{{item.content}}</view>
+            <image wx:if="{{item.type === 'user'}}" class="avatar" src="/images/icons/user.png" mode="aspectFit"></image>
+          </view>
+        </view>
+      </scroll-view>
+      <view class="chat-input">
+        <input type="text" value="{{inputMessage}}" bindinput="onInputChange" placeholder="请输入您的问题" confirm-type="send" bindconfirm="sendMessage"/>
+        <view class="send-btn" bindtap="sendMessage">发送</view>
+      </view>
+    </view>
+  </view>
+</view> 

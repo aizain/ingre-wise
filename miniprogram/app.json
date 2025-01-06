@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/ingre-wise/home/index",
+    "pages/ingre-wise/camera/index",
+    "pages/ingre-wise/detail/index",
+    "pages/ingre-wise/history/index",
+    "pages/ingre-wise/user-center/index",
+    "pages/ingre-wise/analysis/index",
+    "pages/ingre-wise/ingredient/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "AI 工坊",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

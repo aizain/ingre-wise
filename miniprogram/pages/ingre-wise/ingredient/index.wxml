@@ -1,0 +1,102 @@
+<!-- 成分详情页 -->
+<view class="ingredient-container">
+  <block wx:if="{{isLoading}}">
+    <view class="loading-container">
+      <view class="loading"></view>
+      <text>加载中...</text>
+    </view>
+  </block>
+  <block wx:elif="{{!ingredient}}">
+    <view class="empty-container">
+      <text>未找到成分信息</text>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- 头部信息 -->
+    <view class="header">
+      <view class="header-main">
+        <view class="title-section">
+          <view class="title-group">
+            <text class="title">{{ingredient.name}}</text>
+            <view class="alias" wx:if="{{ingredient.alias.length > 0}}">
+              别名：<text wx:for="{{ingredient.alias}}" wx:key="*this">{{item}}{{index < ingredient.alias.length - 1 ? '、' : ''}}</text>
+            </view>
+          </view>
+          <image src="{{ingredient.moleculeUrl}}" mode="aspectFit" class="molecule-image"></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- 基本信息 -->
+    <view class="section">
+      <view class="section-title">基本信息</view>
+      <view class="section-content">
+        <!-- 主要来源 -->
+        <view class="source-section">
+          <view class="source-title">主要来源</view>
+          <view class="source-list">
+            <view class="source-item" wx:for="{{ingredient.sources}}" wx:key="name">
+              <image class="source-icon" src="{{item.icon}}"></image>
+              <text>{{item.name}}</text>
+            </view>
+          </view>
+        </view>
+        <!-- 提取方式 -->
+        <view class="extraction">
+          <view class="section-subtitle">提取方式</view>
+          <view class="extraction-content">{{ingredient.extraction}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 健康评级 -->
+    <view class="section">
+      <view class="section-title">健康评级</view>
+      <view class="section-content">
+        <view class="safety-rating">
+          <view class="stars">
+            <image wx:for="{{5}}" wx:key="index" 
+                  src="/images/icons/{{index < ingredient.safetyLevel ? 'star-active' : 'star'}}.svg" 
+                  class="star-icon"></image>
+          </view>
+          <view class="safety-tag">{{ingredient.safetyTag}}</view>
+        </view>
+        <view class="safety-desc">{{ingredient.safetyDescription}}</view>
+      </view>
+    </view>
+
+    <!-- 作用与功效 -->
+    <view class="section">
+      <view class="section-title">
+        <image src="/images/icons/effect.svg" class="section-icon"></image>
+        作用与功效
+      </view>
+      <view class="section-content">
+        <view class="effects-list">
+          <view class="effect-item" wx:for="{{ingredient.effects}}" wx:key="title">
+            <view class="effect-header">
+              <image src="/images/icons/plus.svg" class="plus-icon"></image>
+              <text>{{item.title}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 注意事项 -->
+    <view class="section">
+      <view class="section-title">
+        <image src="/images/icons/warning.svg" class="section-icon"></image>
+        注意事项
+      </view>
+      <view class="section-content">
+        <view class="cautions-list">
+          <view class="caution-item" wx:for="{{ingredient.cautions}}" wx:key="*this">
+            <image src="/images/icons/warning.svg" class="warning-icon"></image>
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view> 

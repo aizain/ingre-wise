@@ -1,0 +1,70 @@
+<!--index.wxml-->
+<!-- 加载状态 -->
+<view class="loading-container" wx:if="{{isAnalyzing}}">
+  <view class="loading-content">
+    <image class="loading-icon" src="/images/icons/loading.svg" mode="aspectFit"></image>
+    <text class="loading-text">{{loadingText || 'AI分析中...'}}</text>
+  </view>
+</view>
+
+<view class="container">
+  <!-- 主要内容区域 -->
+  <view class="main-content">
+    <!-- Logo和标题 -->
+    <view class="logo-section">
+      <image class="logo" src="/images/icons/ingre-wise-logo.png" mode="aspectFit"></image>
+      <text class="subtitle">食品添加剂和化妆品成分查询</text>
+    </view>
+
+    <!-- 搜索框 -->
+    <view class="search-section">
+      <view class="search-box">
+        <icon type="search" size="18" color="#999999"></icon>
+        <input type="text" placeholder="搜索产品成分" placeholder-class="placeholder-style" bindinput="onSearchInput" bindconfirm="onSearch"/>
+        <view class="camera-icon" bindtap="onTakePhoto">
+          <image src="/images/icons/camera.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- 主要功能按钮 -->
+    <view class="main-functions">
+      <view class="function-item" hover-class="button-hover" bindtap="onTakePhoto">
+        <image src="/images/icons/camera-active.png" mode="aspectFit"></image>
+        <text>拍照识别</text>
+      </view>
+      <view class="function-item" hover-class="button-hover" bindtap="onChooseImage">
+        <image src="/images/icons/album.png" mode="aspectFit"></image>
+        <text>相册识别</text>
+      </view>
+      <view class="function-item" hover-class="button-hover" bindtap="onViewHistory">
+        <image src="/images/icons/history.png" mode="aspectFit"></image>
+        <text>历史记录</text>
+      </view>
+    </view>
+
+    <!-- 导航卡片区域 -->
+    <view class="nav-cards">
+      <view class="nav-card" hover-class="card-hover" bindtap="onNavigateToUserCenter">
+        <image src="/images/icons/user-card.svg" mode="aspectFit"></image>
+        <view class="card-text">
+          <text class="card-title">个人中心</text>
+          <text class="card-desc">查看我的档案</text>
+        </view>
+      </view>
+      <!-- <view class="nav-card" hover-class="card-hover" bindtap="onNavigateToHealthChallenge">
+        <image src="/images/icons/health-card.svg" mode="aspectFit"></image>
+        <view class="card-text">
+          <text class="card-title">健康挑战</text>
+          <text class="card-desc">开启健康生活</text>
+        </view>
+      </view> -->
+    </view>
+
+  </view>
+
+  <!-- 底部悬浮相机按钮 -->
+  <view class="floating-camera" hover-class="floating-camera-hover" bindtap="onTakePhoto">
+    <image src="/images/icons/scan-big.png" mode="aspectFit"></image>
+  </view>
+</view> 

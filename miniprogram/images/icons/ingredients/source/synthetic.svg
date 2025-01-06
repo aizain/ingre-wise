@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 人工合成来源图标 -->
+  <!-- 烧瓶 -->
+  <path d="M12,4 L20,4 L20,12 L24,20 L8,20 L12,12 Z" 
+        stroke="#6B46C1" stroke-width="2" fill="none"/>
+  <!-- 分子结构 -->
+  <circle cx="16" cy="24" r="4" stroke="#805AD5" stroke-width="1" fill="none"/>
+  <line x1="16" y1="20" x2="16" y2="28" stroke="#805AD5" stroke-width="1"/>
+  <line x1="12" y1="24" x2="20" y2="24" stroke="#805AD5" stroke-width="1"/>
+  <!-- 气泡 -->
+  <circle cx="14" cy="16" r="1" fill="#805AD5"/>
+  <circle cx="18" cy="14" r="1" fill="#805AD5"/>
+  <circle cx="16" cy="18" r="1" fill="#805AD5"/>
+</svg> 

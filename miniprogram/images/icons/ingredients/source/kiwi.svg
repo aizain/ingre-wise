@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 猕猴桃图标 -->
+  <circle cx="16" cy="16" r="14" fill="#8D6E63"/>
+  <!-- 果肉 -->
+  <circle cx="16" cy="16" r="12" fill="#AED581"/>
+  <!-- 籽 -->
+  <circle cx="16" cy="16" r="1" fill="#33691E"/>
+  <circle cx="19" cy="16" r="1" fill="#33691E"/>
+  <circle cx="13" cy="16" r="1" fill="#33691E"/>
+  <circle cx="16" cy="19" r="1" fill="#33691E"/>
+  <circle cx="16" cy="13" r="1" fill="#33691E"/>
+  <circle cx="18" cy="18" r="1" fill="#33691E"/>
+  <circle cx="14" cy="14" r="1" fill="#33691E"/>
+  <circle cx="18" cy="14" r="1" fill="#33691E"/>
+  <circle cx="14" cy="18" r="1" fill="#33691E"/>
+  <!-- 绒毛 -->
+  <path d="M16,2 C18,2 19,4 18,5" stroke="#8D6E63" stroke-width="1" fill="none"/>
+  <path d="M20,3 C22,3 23,5 22,6" stroke="#8D6E63" stroke-width="1" fill="none"/>
+  <path d="M12,3 C14,3 15,5 14,6" stroke="#8D6E63" stroke-width="1" fill="none"/>
+</svg> 

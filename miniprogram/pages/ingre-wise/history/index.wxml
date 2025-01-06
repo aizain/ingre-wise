@@ -1,0 +1,81 @@
+<!--index.wxml-->
+<!-- 加载状态 -->
+<view class="loading-container" wx:if="{{isLoading}}">
+  <view class="loading-content">
+    <image class="loading-icon" src="/images/icons/loading.svg" mode="aspectFit"></image>
+    <text class="loading-text">加载历史记录...</text>
+  </view>
+</view>
+
+<!-- 主要内容 -->
+<view class="container {{isLoading ? 'hidden' : ''}}">
+  <view class="history-list" wx:if="{{records.length > 0}}">
+    <view class="history-item" wx:for="{{records}}" wx:key="_id">
+      <view class="item-content" bindtap="onViewDetail" data-id="{{item._id}}">
+        <view class="item-header">
+          <text class="item-title">{{item.productName || '未知产品'}}</text>
+          <text class="item-time">{{item.createdAtFormat}}</text>
+        </view>
+        
+        <view class="item-preview">
+          <view class="image-wrapper">
+            <image class="item-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+            <!-- 识别状态标签 -->
+            <view class="status-tag {{item.recognitionStatus === '已识别' ? 'success' : 'fail'}}">
+              {{item.recognitionStatus}}
+            </view>
+          </view>
+          
+          <view class="item-info">
+            <!-- 非食品配料表显示 -->
+            <block wx:if="{{!item.isIngredientLabel}}">
+              <view class="info-row">
+                <text class="value notice">{{item.failureReason || '非食品配料表'}}</text>
+              </view>
+              <view class="info-row">
+                <text class="label">描述：</text>
+                <text class="value">{{item.imageDescription}}</text>
+              </view>
+            </block>
+            
+            <!-- 食品配料表显示 -->
+            <block wx:else>
+              <view class="info-row" wx:if="{{item.ingredients}}">
+                <text class="label">配料：</text>
+                <text class="value">{{item.ingredients}}</text>
+              </view>
+              <view class="info-row" wx:if="{{item.nutrition}}">
+                <text class="label">营养：</text>
+                <text class="value">{{item.nutrition}}</text>
+              </view>
+              <view class="info-row error" wx:if="{{item.failureReason}}">
+                <text class="value">{{item.failureReason}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <view class="item-actions">
+        <button class="analyze-btn" size="mini" bindtap="onAnalyzeIngredients" data-id="{{item._id}}">
+          <image class="star-icon" src="/images/icons/star-active.svg" mode="aspectFit"></image>
+          成分分析
+        </button>
+        <button class="delete-btn" size="mini" type="warn" bindtap="onDeleteProduct" data-id="{{item._id}}">删除</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{hasMore}}">
+    <button class="load-more-btn" bindtap="onLoadMore" loading="{{loadingMore}}">
+      {{loadingMore ? '加载中...' : '加载更多'}}
+    </button>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{records.length === 0}}">
+    <image class="empty-icon" src="/images/icons/empty.png" mode="aspectFit"></image>
+    <text class="empty-text">暂无历史记录</text>
+    <button class="start-btn" bindtap="onStartAnalyze">开始分析</button>
+  </view>
+</view>

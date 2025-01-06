@@ -1,0 +1,119 @@
+<!-- 用户中心 -->
+<view class="user-center">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <view class="user-info" bindtap="{{!hasUserInfo ? 'getUserInfo' : ''}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="user-detail">
+        <text class="nickname">{{userInfo.nickName}}</text>
+        <text class="level" wx:if="{{hasUserInfo}}">健康达人 Lv.{{userInfo.level}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据统计 -->
+  <view class="stats-card">
+    <view class="stat-item">
+      <text class="stat-num">{{stats.checkInDays}}</text>
+      <text class="stat-label">连续打卡</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.healthPoints}}</text>
+      <text class="stat-label">健康积分</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.challengeCount}}</text>
+      <text class="stat-label">完成挑战</text>
+    </view>
+  </view>
+
+  <!-- 功能导航 -->
+  <view class="nav-grid">
+    <view class="nav-item" bindtap="navigateTo" data-path="challenge">
+      <image class="nav-icon" src="/images/icons/trophy.png"></image>
+      <text class="nav-label">我的挑战</text>
+      <text class="nav-desc">已完成 {{stats.finishedChallenges}} 个挑战</text>
+    </view>
+    <view class="nav-item" bindtap="navigateTo" data-path="meals">
+      <image class="nav-icon" src="/images/icons/meal.png"></image>
+      <text class="nav-label">我的代餐</text>
+      <text class="nav-desc">已购买 {{stats.purchasedItems}} 件商品</text>
+    </view>
+    <view class="nav-item" bindtap="navigateTo" data-path="report">
+      <image class="nav-icon" src="/images/icons/report.png"></image>
+      <text class="nav-label">健康报告</text>
+      <text class="nav-desc">查看详细数据</text>
+    </view>
+    <view class="nav-item" bindtap="navigateTo" data-path="goals">
+      <image class="nav-icon" src="/images/icons/target.png"></image>
+      <text class="nav-label">健康目标</text>
+      <text class="nav-desc">完成度 {{stats.goalProgress}}%</text>
+    </view>
+  </view>
+
+  <!-- 权限管理 -->
+  <view class="permission-card">
+    <view class="card-title">授权管理</view>
+    <view class="permission-list">
+      <view class="permission-item">
+        <view class="permission-info">
+          <image class="permission-icon" src="/images/icons/camera-active.png"></image>
+          <view class="permission-detail">
+            <text class="permission-name">相机权限</text>
+            <text class="permission-desc">用于拍摄食物图片进行分析</text>
+          </view>
+        </view>
+        <view class="permission-status {{permissions.camera ? 'authorized' : ''}}">
+          <text>{{permissions.camera ? '已授权' : '未授权'}}</text>
+          <button wx:if="{{!permissions.camera}}" class="auth-btn" bindtap="requestPermission" data-type="camera">去开启</button>
+        </view>
+      </view>
+     <!--  <view class="permission-item">
+        <view class="permission-info">
+          <image class="permission-icon" src="/images/icons/album.png"></image>
+          <view class="permission-detail">
+            <text class="permission-name">相册权限</text>
+            <text class="permission-desc">用于上传已有的食物图片</text>
+          </view>
+        </view>
+        <view class="permission-status {{permissions.album ? 'authorized' : ''}}">
+          <text>{{permissions.album ? '已授权' : '未授权'}}</text>
+          <button wx:if="{{!permissions.album}}" class="auth-btn" bindtap="requestPermission" data-type="album">去开启</button>
+        </view>
+      </view> -->
+    </view>
+  </view>
+
+  <!-- 识别策略卡片 -->
+  <view class="permission-card">
+    <view class="card-title">识别策略</view>
+    <view class="permission-list">
+      <view class="permission-item">
+        <view class="permission-info">
+          <image class="permission-icon" src="/images/icons/flash.svg"></image>
+          <view class="permission-detail">
+            <text class="permission-name">快速模式</text>
+            <text class="permission-desc">快速识别配料表内容</text>
+          </view>
+        </view>
+        <view class="permission-status {{currentStrategy === 'fast' ? 'authorized' : ''}}">
+          <text>{{currentStrategy === 'fast' ? '已选择' : '未选择'}}</text>
+          <button wx:if="{{currentStrategy !== 'fast'}}" class="auth-btn" bindtap="onStrategyChange" data-strategy="fast">选择</button>
+        </view>
+      </view>
+      <view class="permission-item">
+        <view class="permission-info">
+          <image class="permission-icon" src="/images/icons/ai.svg"></image>
+          <view class="permission-detail">
+            <text class="permission-name">智能体模式</text>
+            <text class="permission-desc">更准确的智能分析</text>
+          </view>
+        </view>
+        <view class="permission-status {{currentStrategy === 'ai' ? 'authorized' : ''}}">
+          <text>{{currentStrategy === 'ai' ? '已选择' : '未选择'}}</text>
+          <button wx:if="{{currentStrategy !== 'ai'}}" class="auth-btn" bindtap="onStrategyChange" data-strategy="ai">选择</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 

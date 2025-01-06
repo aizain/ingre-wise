@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 矿物来源图标 -->
+  <path d="M6,24 L16,8 L26,24 Z" stroke="#78909C" stroke-width="2" fill="#90A4AE"/>
+  <!-- 晶体纹理 -->
+  <path d="M16,8 L13,16 L16,20 L19,16 Z" stroke="#78909C" stroke-width="1" fill="#B0BEC5"/>
+  <path d="M13,16 L10,22 L16,20 Z" stroke="#78909C" stroke-width="1"/>
+  <path d="M19,16 L22,22 L16,20 Z" stroke="#78909C" stroke-width="1"/>
+  <!-- 光泽效果 -->
+  <path d="M14,12 L15,10" stroke="#ECEFF1" stroke-width="2" stroke-linecap="round"/>
+</svg> 

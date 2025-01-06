@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 维生素C分子结构简化图 -->
+  <g transform="translate(20,20) scale(0.8)">
+    <!-- 六元环 -->
+    <path d="M100,50 L150,75 L150,125 L100,150 L50,125 L50,75 Z" 
+          stroke="#6B46C1" stroke-width="4" fill="none"/>
+    
+    <!-- OH基团 -->
+    <circle cx="150" cy="75" r="8" fill="#4CAF50"/>
+    <circle cx="150" cy="125" r="8" fill="#4CAF50"/>
+    <circle cx="50" cy="125" r="8" fill="#4CAF50"/>
+    
+    <!-- C=O键 -->
+    <line x1="100" y1="50" x2="100" y2="30" stroke="#E53E3E" stroke-width="4"/>
+    <circle cx="100" cy="25" r="8" fill="#E53E3E"/>
+    
+    <!-- 标注 -->
+    <text x="160" y="80" fill="#4CAF50" font-size="14">OH</text>
+    <text x="160" y="130" fill="#4CAF50" font-size="14">OH</text>
+    <text x="30" y="130" fill="#4CAF50" font-size="14">OH</text>
+    <text x="105" y="25" fill="#E53E3E" font-size="14">O</text>
+  </g>
+</svg> 

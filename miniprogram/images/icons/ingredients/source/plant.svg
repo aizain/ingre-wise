@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 植物来源图标 -->
+  <path d="M16,28 C16,28 16,20 16,16" stroke="#4CAF50" stroke-width="2"/>
+  <!-- 叶子 -->
+  <path d="M16,16 C16,16 12,12 8,12 C8,16 12,20 16,16" 
+        fill="#81C784" stroke="#4CAF50" stroke-width="1"/>
+  <path d="M16,16 C16,16 20,12 24,12 C24,16 20,20 16,16" 
+        fill="#81C784" stroke="#4CAF50" stroke-width="1"/>
+  <path d="M16,16 C16,16 16,8 16,4 C20,4 24,8 16,16" 
+        fill="#81C784" stroke="#4CAF50" stroke-width="1"/>
+  <!-- 根部 -->
+  <path d="M16,28 C16,28 14,30 12,31" stroke="#8D6E63" stroke-width="1"/>
+  <path d="M16,28 C16,28 18,30 20,31" stroke="#8D6E63" stroke-width="1"/>
+</svg> 

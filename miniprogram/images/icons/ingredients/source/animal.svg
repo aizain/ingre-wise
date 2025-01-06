@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 动物来源图标（简化的牛） -->
+  <path d="M8,12 L24,12 L24,22 L8,22 Z" stroke="#795548" stroke-width="2" fill="#8D6E63"/>
+  <!-- 头部 -->
+  <path d="M24,17 L28,14 L28,20 L24,17" stroke="#795548" stroke-width="2" fill="#8D6E63"/>
+  <!-- 耳朵 -->
+  <path d="M24,12 L26,8 L28,12" stroke="#795548" stroke-width="2"/>
+  <!-- 腿 -->
+  <path d="M10,22 L10,26" stroke="#795548" stroke-width="2"/>
+  <path d="M22,22 L22,26" stroke="#795548" stroke-width="2"/>
+  <!-- 眼睛 -->
+  <circle cx="26" cy="16" r="1" fill="#3E2723"/>
+</svg> 

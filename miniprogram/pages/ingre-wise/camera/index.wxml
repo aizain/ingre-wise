@@ -1,0 +1,55 @@
+<!--camera.wxml-->
+<view class="container {{showUI ? 'show' : ''}}">
+  <camera wx:if="{{cameraEnabled}}" device-position="back" flash="off" class="camera">
+    <!-- 顶部导航 -->
+    <view class="camera-header">
+      <view class="help-btn" bindtap="showCameraHelp">
+        <image src="/images/icons/help.png" mode="aspectFit"></image>
+      </view>
+      <text class="camera-title">请拍摄清晰配料表</text>
+      <view class="placeholder"></view>
+    </view>
+
+    <!-- 示例图片展示 -->
+    <view class="example-section">
+      <view class="example-item wrong">
+        <image src="/images/examples/wrong.png" mode="aspectFit" lazy-load></image>
+        <view class="example-tag error">
+          <text>错误示范</text>
+        </view>
+      </view>
+      <view class="example-item right">
+        <image src="/images/examples/right.png" mode="aspectFit" lazy-load></image>
+        <view class="example-tag success">
+          <text>正确示范</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部按钮 -->
+    <view class="camera-footer">
+      <view class="scan-btn" bindtap="onScanBarcode" hover-class="btn-hover">
+        <image src="/images/icons/barcode.png" mode="aspectFit"></image>
+        <text>扫码查成分</text>
+      </view>
+      <view class="photo-btn" bindtap="takePhoto" hover-class="btn-hover">
+        <image src="/images/icons/camera.png" mode="aspectFit"></image>
+        <text>拍照查成分</text>
+      </view>
+    </view>
+  </camera>
+
+  <!-- 相机关闭时的界面 -->
+  <view wx:else class="camera-disabled">
+    <view class="camera-footer">
+      <view class="scan-btn" bindtap="onScanBarcode" hover-class="btn-hover">
+        <image src="/images/icons/barcode.png" mode="aspectFit"></image>
+        <text>扫码查成分</text>
+      </view>
+      <view class="photo-btn" bindtap="takePhoto" hover-class="btn-hover">
+        <image src="/images/icons/camera.png" mode="aspectFit"></image>
+        <text>拍照查成分</text>
+      </view>
+    </view>
+  </view>
+</view> 

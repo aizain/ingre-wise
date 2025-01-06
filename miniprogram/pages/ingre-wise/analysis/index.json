@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "成分解析",
+  "navigationBarBackgroundColor": "#EFF6FF",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#F5F7FA",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+} 

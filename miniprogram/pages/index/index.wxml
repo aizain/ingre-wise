@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 头部区域 -->
+  <view class="header">
+    <view class="title">AI 工坊</view>
+    <view class="subtitle">基于人工智能技术，为您提供便捷的生活服务</view>
+  </view>
+
+  <!-- 应用列表 -->
+  <view class="app-list">
+    <!-- 动态渲染应用列表 -->
+    <view class="app-item" 
+      wx:for="{{apps}}" 
+      wx:key="id" 
+      bindtap="onNavigateToApp" 
+      data-id="{{item.id}}">
+      <view class="app-icon">
+        <image src="{{item.icon}}" mode="aspectFit"></image>
+      </view>
+      <view class="app-info">
+        <view class="app-title">
+          <text class="name">{{item.name}}</text>
+          <text class="tag">{{item.tag}}</text>
+        </view>
+        <view class="app-desc">{{item.desc}}</view>
+      </view>
+      <view class="app-arrow">
+        <image src="/images/icons/arrow-right.png" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <!-- 更多应用占位 -->
+    <view class="app-item coming-soon">
+      <view class="app-icon">
+        <image src="/images/icons/coming-soon.png" mode="aspectFit"></image>
+      </view>
+      <view class="app-info">
+        <view class="app-title">
+          <text class="name">更多应用</text>
+          <text class="tag">Coming</text>
+        </view>
+        <view class="app-desc">更多AI智能应用正在开发中，敬请期待...</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部信息 -->
+  <view class="footer">
+    <view class="footer-text">如果您觉得好用，请给我一个好评</view>
+    <view class="version">Version 1.0.0</view>
+  </view>
+</view>

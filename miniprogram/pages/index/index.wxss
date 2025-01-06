@@ -1,0 +1,138 @@
+/**index.wxss**/
+
+page {
+  background: #f6f6f6;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+
+/* 头部区域 */
+.header {
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+
+.header .title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.header .subtitle {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 应用列表 */
+.app-list {
+  width: 100%;
+}
+
+.app-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.app-item:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+}
+
+.app-item.coming-soon {
+  opacity: 0.6;
+}
+
+.app-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 24rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-icon image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.app-info {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.app-title .name {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.app-title .tag {
+  font-size: 20rpx;
+  color: #07C160;
+  background: rgba(7, 193, 96, 0.1);
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  margin-left: 12rpx;
+}
+
+.app-desc {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.app-arrow {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-arrow image {
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.3;
+}
+
+/* 底部信息 */
+.footer {
+  margin-top: 80rpx;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 12rpx;
+}
+
+.version {
+  font-size: 24rpx;
+  color: #bbb;
+}

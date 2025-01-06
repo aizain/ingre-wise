@@ -1,0 +1,99 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 图片展示 -->
+  <view class="image-section">
+    <image 
+      class="product-image" 
+      src="{{detail.imageUrl}}" 
+      mode="aspectFit" 
+      bindtap="onPreviewImage"
+      binderror="onImageError"
+      show-menu-by-longpress
+    ></image>
+    <!-- 识别状态标签 -->
+    <view class="status-tag {{detail.recognitionStatus === '已识别' ? 'success' : 'fail'}}">
+      {{detail.recognitionStatus}}
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="info-section">
+    <view class="info-header">
+      <view class="header-main">
+        <text class="product-name">{{detail.productName || '未知产品'}}</text>
+        <button class="analyze-btn" bindtap="onAnalyzeIngredients">
+          <image class="star-icon" src="/images/icons/star-active.svg" mode="aspectFit"></image>
+          成分分析
+        </button>
+      </view>
+      <text class="create-time">{{detail.createdAtFormat}}</text>
+    </view>
+
+    <!-- 非食品配料表显示 -->
+    <block wx:if="{{!detail.isIngredientLabel}}">
+      <view class="info-block notice">
+        <view class="block-content">{{detail.failureReason || '非食品配料表'}}</view>
+      </view>
+      
+      <!-- 图片描述 -->
+      <view class="info-block">
+        <view class="block-title">图片描述</view>
+        <view class="block-content">{{detail.imageDescription || '暂无描述'}}</view>
+      </view>
+
+      <!-- 图片内容 -->
+      <view class="info-block" wx:if="{{detail.imageContent}}">
+        <view class="block-title">图片内容</view>
+        <view class="block-content">{{detail.imageContent}}</view>
+      </view>
+    </block>
+
+    <!-- 食品配料表显示 -->
+    <block wx:else>
+      <!-- 识别失败提示 -->
+      <view class="info-block error" wx:if="{{detail.failureReason}}">
+        <view class="block-content">{{detail.failureReason}}</view>
+      </view>
+
+      <!-- 配料信息 -->
+      <view class="info-block" wx:if="{{detail.ingredients}}">
+        <view class="block-title">配料表</view>
+        <view class="block-content">{{detail.ingredients}}</view>
+      </view>
+
+      <!-- 营养成分 -->
+      <view class="info-block" wx:if="{{detail.nutrition}}">
+        <view class="block-title">营养成分</view>
+        <view class="block-content">{{detail.nutrition}}</view>
+      </view>
+
+      <!-- 图片描述 -->
+      <view class="info-block">
+        <view class="block-title">图片描述</view>
+        <view class="block-content">{{detail.imageDescription}}</view>
+      </view>
+
+      <!-- 健康建议 -->
+      <view class="info-block" wx:if="{{detail.suggestions}}">
+        <view class="block-title">健康建议</view>
+        <view class="block-content suggestions">
+          <view wx:for="{{detail.suggestions}}" wx:key="*this" class="suggestion-item">
+            {{item}}
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <button class="action-btn share" open-type="share">
+      <image class="btn-icon" src="/images/icons/share.png"></image>
+      <text>分享</text>
+    </button>
+    <button class="action-btn delete" bindtap="onDelete">
+      <image class="btn-icon" src="/images/icons/delete.png"></image>
+      <text>删除</text>
+    </button>
+  </view>
+</view>

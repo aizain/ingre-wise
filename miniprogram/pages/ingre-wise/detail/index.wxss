@@ -1,0 +1,242 @@
+/**index.wxss**/
+page {
+  background: #f6f6f6;
+}
+
+.container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding-bottom: 120rpx;
+}
+
+/* 图片展示 */
+.image-section {
+  position: relative;
+  width: 100%;
+  height: 500rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 500rpx;
+  object-fit: contain;
+}
+
+.status-tag {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  padding: 6rpx 20rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  color: #fff;
+  z-index: 1;
+}
+
+.status-tag.success {
+  background-color: #07c160;
+}
+
+.status-tag.fail {
+  background-color: #fa5151;
+}
+
+/* 基本信息 */
+.info-section {
+  padding: 30rpx;
+  background: #fff;
+}
+
+.info-header {
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.product-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin-right: 10rpx;
+}
+
+.analyze-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 1 16rpx !important;
+  height: 50rpx !important;
+  min-width: 0 !important;
+  width: auto !important;
+  background: linear-gradient(135deg, #9C27B0, #673AB7) !important;
+  color: #fff !important;
+  border-radius: 28rpx !important;
+  font-size: 24rpx !important;
+  box-shadow: 0 4rpx 12rpx rgba(156, 39, 176, 0.3) !important;
+  transition: all 0.3s ease !important;
+  flex-shrink: 0 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  font-weight: normal !important;
+  border: none !important;
+}
+
+button.analyze-btn {
+  background: linear-gradient(135deg, #9C27B0, #673AB7) !important;
+}
+
+.analyze-btn:not([size='mini']) {
+  width: auto !important;
+  min-height: 48rpx !important;
+}
+
+.analyze-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 6rpx rgba(156, 39, 176, 0.2);
+}
+
+.analyze-btn::after {
+  display: none !important;
+  border: none !important;
+}
+
+.star-icon {
+  width: 28rpx !important;
+  height: 28rpx !important;
+  margin-right: 6rpx !important;
+  filter: brightness(2);
+  animation: twinkle 1.5s infinite ease-in-out;
+  flex-shrink: 0;
+  vertical-align: middle !important;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+.create-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 信息块 */
+.info-block {
+  margin-bottom: 30rpx;
+}
+
+.info-block:last-child {
+  margin-bottom: 0;
+}
+
+.info-block.notice {
+  padding: 20rpx;
+  background: #fff2f2;
+  border-radius: 8rpx;
+}
+
+.info-block.notice .block-content {
+  color: #fa5151;
+  font-weight: 500;
+}
+
+.info-block.error {
+  padding: 20rpx;
+  background: #fff2f2;
+  border-radius: 8rpx;
+}
+
+.info-block.error .block-content {
+  color: #fa5151;
+}
+
+.block-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.block-content {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #666;
+}
+
+.suggestions .suggestion-item {
+  position: relative;
+  padding-left: 24rpx;
+  margin-bottom: 12rpx;
+}
+
+.suggestions .suggestion-item:last-child {
+  margin-bottom: 0;
+}
+
+.suggestions .suggestion-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16rpx;
+  width: 8rpx;
+  height: 8rpx;
+  background: #07c160;
+  border-radius: 50%;
+}
+
+/* 底部操作栏 */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 30rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  line-height: normal;
+}
+
+.action-btn::after {
+  display: none;
+}
+
+.btn-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 8rpx;
+}
+
+.action-btn text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.action-btn.delete text {
+  color: #fa5151;
+}
